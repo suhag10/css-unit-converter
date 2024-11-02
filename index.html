@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="px, em, rem, cm, in, pixels, centimeters, inch, inches, converter, calculator, responsive, adaptive, media, css, unit">
+    <title>CSS Unit Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="text-center text-white mb-3">CSS Unit Converter</h1>
+
+    <div class="result-box text-center">
+        <h1 class="text-white" id="result">1rem</h1>
+        <button type="button" class="result-copy text-white" data-value="1rem" aria-label="Copy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="currentColor" class="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button>
+    </div>
+
+    <div class="wrapper">
+        <div class="input-group mb-3">
+            <input type="number" min="1" id="data-value" class="form-control" value="16">
+            <span class="input-group-text text-center unit">px</span>
+        </div>
+
+        <div class="input-ppi" style="display: none">
+            <p style="font-size: 12px; margin-bottom: 4px;">PPI (Pixels Per Inches)</p>
+            <div class="input-group mb-3">
+                <input type="number" min="1" id="data-ppi" class="form-control" value="16">
+                <span class="input-group-text text-center ppi">PPI</span>
+            </div>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Dropdown">
+            <select class="form-select" id="select-option" aria-label="Select">
+                <option value="px-to-rem" selected>px to rem</option>
+                <option value="rem-to-px">rem to px</option>
+                <option value="px-to-em">px to em</option>
+                <option value="em-to-px">em to px</option>
+                <option value="px-to-cm">px to cm</option>
+                <option value="cm-to-px">cm to px</option>
+                <option value="px-to-in">px to in</option>
+                <option value="in-to-px">in to px</option>
+            </select>
+            <button id="convert" type="submit" class="btn-submit text-white">Convert</button>
+        </div>
+    </div>
+
+    <div class="table-wrapper container">
+        <div class="row columns-3">
+            <div class="table-px-rem">
+                <details>
+                    <summary>Pixels (PX) to REM</summary>
+                    <div id="table-px-rem"></div>
+                </details>
+            </div>
+
+            <div class="table-rem-px">
+                <details>
+                    <summary>REM to Pixels (PX)</summary>
+                    <div id="table-rem-px"></div>
+                </details>
+            </div>
+
+            <div class="table-in-px">
+                <details>
+                    <summary>Inches (IN) to Pixels (PX)</summary>
+                    <div id="table-in-px"></div>
+                </details>
+            </div>
+
+            <div class="table-px-in">
+                <details class="-mt-3">
+                    <summary>Pixels (PX) to Inches (IN)</summary>
+                    <div id="table-px-in"></div>
+                </details>
+            </div>
+
+            <div class="table-cm-px">
+                <details class="-mt-3">
+                    <summary>Centimeters (CM) to Pixels (PX)</summary>
+                    <div id="table-cm-px"></div>
+                </details>
+            </div>
+
+            <div class="table-px-cm">
+                <details class="-mt-3">
+                    <summary>Pixels (PX) to Centimeters (CM)</summary>
+                    <div id="table-px-cm"></div>
+                </details>
+            </div>
+
+            <div class="text-gray-400">
+                <details>
+                    <summary>Understanding the Centimeters (CM)</summary>
+                    <ul style="padding-left: 15px; padding-top: 15px; margin-bottom: 30px;">
+                        <li class="mb-3"><b>Centimeters</b> (96 PPI): This column shows the centimeter equivalent for a standard PPI of 96, common in web design.</li>
+                        <li class="mb-3"><b>Centimeters</b> (300 PPI): This column shows the centimeter equivalent for a PPI of 300, common for high-quality printing.</li>
+                    </ul>
+    
+                    <b>The Role of PPI (Pixels Per Inches)</b>
+                    <p>The conversion isn’t a direct 1:1 relationship. Here’s why:</p>
+                    <ul style="padding-left: 15px; padding-top: 15px; margin-bottom: 30px;">
+                        <li class="mb-3"><b>PPI</b> (Pixels Per Inches): PPI indicates the pixel density of a screen or image. A higher PPI means more pixels in the same physical space, resulting in a sharper image.</li>
+                        <li class="mb-3">To convert pixels to centimeters, you MUST know the PPI of the image or the intended display device.</li>
+                    </ul>
+    
+                    <b>Conversion Formula</b>
+                    <p>The basic formula for the conversion is:</p>
+                    <b>Size (cm) = Size (px) / PPI * 2.54</b>
+                    <p>Where:</p>
+                    <ul style="padding-left: 15px; margin-bottom: 30px;">
+                        <li>2.54 is the conversion factor between inches and centimeters.</li>
+                    </ul>
+                </details>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <button class="opened-btn" onclick="isOpenSidebar('.sidebar')" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+        </svg></button>
+
+        <div class="sidebar-group">
+            <div class="input-group mb-3">
+                <input type="number" min="1" id="data-table" class="form-control" value="5">
+                <span class="input-group-text text-center table-unit">px</span>
+            </div>
+
+            <div class="btn-group mb-3" role="group" aria-label="Dropdown">
+                <select class="form-select" id="select-option-table" aria-label="Select">
+                    <option value="px-to-rem" selected>px to rem</option>
+                    <option value="rem-to-px">rem to px</option>
+                    <option value="px-to-em">px to em</option>
+                    <option value="em-to-px">em to px</option>
+                    <option value="px-to-cm">px to cm</option>
+                    <option value="cm-to-px">cm to px</option>
+                    <option value="px-to-in">px to in</option>
+                    <option value="in-to-px">in to px</option>
+                </select>
+                <button id="isClickRun" type="button" class="btn-submit text-white">Run</button>
+            </div>
+            <button type="submit" class="btn-submit text-white result-table-copy">Copy all the data</button>
+
+            <div class="result-table text-white">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Pixels</th>
+                            <th scope="col">REM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1px</td>
+                            <td>0.0625rem</td>
+                        </tr>
+                        <tr>
+                            <td>2px</td>
+                            <td>0.125rem</td>
+                        </tr>
+                        <tr>
+                            <td>3px</td>
+                            <td>0.1875rem</td>
+                        </tr>
+                        <tr>
+                            <td>4px</td>
+                            <td>0.25rem</td>
+                        </tr>
+                        <tr>
+                            <td>5px</td>
+                            <td>0.3125rem</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="website-reference">
+        <a href="https://www.w3schools.com/cssref/css_units.php" target="_blank">W3Schools &minus; CSS units</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages" target="_blank">MDN &minus; CSS values and units</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length" target="_blank">MDN &minus; CSS &lt;length&gt;</a>
+        <a href="https://caniuse.com/rem" target="_blank">Caniuse &minus; rem browsers support</a>
+    </div>
+
+    <footer>
+        <p class="text-white text-center mb-3">&copy; 2024 CSS Unit Converter</p>
+    </footer>
+
+    <script src="index.js" defer></script>
+</body>
+</html>
